@@ -23,7 +23,7 @@ const Home = () => {
           <div className="text-center bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow hover:shadow-md transition">
             <img src="/img1.png" alt="Icon" className="mx-auto mb-4" />
             <h2 className="text-xl font-bold text-gray-800 dark:text-white">Data Secured</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Your data is encrypted and protected 24/7.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Your data is encrypted and protected - 24/7.</p>
           </div>
           
           <div className="text-center bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow hover:shadow-md transition">
