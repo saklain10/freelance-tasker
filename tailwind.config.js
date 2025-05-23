@@ -1,12 +1,14 @@
-// // tailwind.config.js
-// export default {
-//   content: [
-//     "./index.html",
-//     "./src/**/*.{js,ts,jsx,tsx}",
-//   ],
-//   darkMode: 'class', // dark mode toggle via class
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// };
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "dark"], // ✅ only these 2 for now
+  },
+}
+
+

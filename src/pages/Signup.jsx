@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { use, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Signup = () => {
+  
   const { createUser, googleLogin, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");

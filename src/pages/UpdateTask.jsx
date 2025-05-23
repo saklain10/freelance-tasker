@@ -1,62 +1,92 @@
+
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const UpdateTask = () => {
   const { user } = useContext(AuthContext);
-  const { id } = useParams(); // later used for fetching specific task
-  const [taskData, setTaskData] = useState({
-    title: "",
-    category: "",
-    description: "",
-    deadline: "",
-    budget: "",
-  });
+  const { id } = useParams();
+  console.log("Update Page ID:", id); 
+  // const { _id } = useParams();
+  const navigate = useNavigate();
+  const [taskData, setTaskData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch task details
   useEffect(() => {
-    // Simulate fetching the data based on ID (you’ll replace this with actual fetch)
-    // Here hardcoded for now
-    const mockTask = {
-      title: "Landing Page",
-      category: "Web Development",
-      description: "Build a responsive landing page",
-      deadline: "2025-05-20",
-      budget: 100,
-    };
-    setTaskData(mockTask);
+    fetch(`http://localhost:3000/tasks/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTaskData(data);
+        console.log(data)
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching task:", err);
+        setLoading(false);
+      });
   }, [id]);
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const updatedTask = {
-      title: form.title.value,
-      category: form.category.value,
-      description: form.description.value,
-      deadline: form.deadline.value,
-      budget: form.budget.value,
-      userEmail: user.email,
-      userName: user.displayName,
-    };
-    console.log("Updated Task:", updatedTask);
-
-    // Show success alert
-    Swal.fire({
-      icon: "success",
-      title: "Task Updated!",
-      text: "Your task has been successfully updated.",
-      confirmButtonColor: "#3085d6",
-    });
+  // ✅ Controlled input handler
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTaskData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ Handle form submit
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    const updatedTask = {
+      ...taskData,
+      userEmail: user?.email,
+      userName: user?.displayName,
+    };
+     console.log(updatedTask)
+
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedTask),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.matchedCount > 0 && data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "Updated!",
+            text: "Your task has been updated successfully.",
+            confirmButtonColor: "#3085d6",
+          });
+          navigate("/my-posted-tasks");
+        } else {
+          Swal.fire({
+            icon: "info",
+            title: "No Changes",
+            text: "You didn't make any changes.",
+            confirmButtonColor: "#3085d6",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error("Update error:", err);
+        Swal.fire("Oops!", "Something went wrong while updating.", "error");
+      });
+  };
+
+  if (loading) return <div className="text-center mt-10">Loading task...</div>;
+  if (!taskData) return <div className="text-center mt-10 text-red-500">Task not found</div>;
+
   return (
-    <div className="max-w-2xl mx-auto p-6 mt-10 flex-col justify-center items-center">
+    <div className="max-w-2xl mx-auto p-6 mt-10">
       <h2 className="text-2xl font-bold mb-6">Update Task</h2>
       <form onSubmit={handleUpdate} className="space-y-4">
         <input
           name="title"
-          defaultValue={taskData.title}
+          value={taskData.title}
+          onChange={handleChange}
           type="text"
           placeholder="Task Title"
           required
@@ -64,7 +94,8 @@ const UpdateTask = () => {
         />
         <select
           name="category"
-          defaultValue={taskData.category}
+          value={taskData.category}
+          onChange={handleChange}
           required
           className="input w-full"
         >
@@ -76,21 +107,24 @@ const UpdateTask = () => {
         </select>
         <textarea
           name="description"
-          defaultValue={taskData.description}
+          value={taskData.description}
+          onChange={handleChange}
           placeholder="Task Description"
           required
           className="input w-full"
         />
         <input
           name="deadline"
-          defaultValue={taskData.deadline}
+          value={taskData.deadline}
+          onChange={handleChange}
           type="date"
           required
           className="input w-full"
         />
         <input
           name="budget"
-          defaultValue={taskData.budget}
+          value={taskData.budget}
+          onChange={handleChange}
           type="number"
           placeholder="Budget $"
           required
@@ -106,7 +140,9 @@ const UpdateTask = () => {
           readOnly
           className="input w-full bg-gray-100"
         />
-        <button type="submit" className="btn btn-success w-full">Update Task</button>
+        <button type="submit" className="btn btn-success w-full">
+          Update Task
+        </button>
       </form>
     </div>
   );

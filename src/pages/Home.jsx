@@ -1,12 +1,15 @@
 import React from 'react';
 import Banner from "../components/Banner";
 import FeaturedTasks from '../components/FeaturedTasks';
+import { Fade } from "react-awesome-reveal";
+
 
 const Home = () => {
   return (
     <div className="pt-21"> 
       <Banner />
       
+      <Fade direction="up" triggerOnce>
             <div className="bg-white py-4">
               {/* dark:bg-gray-900 */}
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -29,7 +32,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
+      </Fade>
       <FeaturedTasks />
     </div>
   );
