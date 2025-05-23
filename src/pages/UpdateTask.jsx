@@ -28,13 +28,11 @@ const UpdateTask = () => {
       });
   }, [id]);
 
-  // ✅ Controlled input handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Handle form submit
   const handleUpdate = (e) => {
     e.preventDefault();
 
