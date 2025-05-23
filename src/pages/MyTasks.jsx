@@ -47,7 +47,7 @@ const MyTasks = () => {
     <div className="max-w-6xl mx-auto p-6 mt-20">
       <h2 className="text-2xl font-bold mb-6">My Posted Tasks</h2>
       {myTasks.length === 0 ? (
-        <p className="text-gray-500">No tasks posted yet.</p>
+        <p className="text-gray-500">No tasks posted yet..</p>
       ) : (
         <table className="w-full table-auto border">
           <thead className="bg-gray-100">
