@@ -13,7 +13,7 @@ const NotFound = () => {
           to="/"
           className="mt-6 inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700 transition"
         >
-          Go Home
+          Go Home Back
         </Link>
       </div>
     </div>
