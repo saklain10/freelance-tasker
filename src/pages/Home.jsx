@@ -8,9 +8,8 @@ import WhyChooseUs from '../components/WhyChooseUs';
 
 const Home = () => {
   return (
-    <div className="pt-21"> 
+    <div className="pt-20"> 
       <Banner />
-      
       
       <Fade direction="up" triggerOnce>
             <div className="bg-white dark:bg-gray-900 my-4">
