@@ -1,14 +1,12 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class", 
   theme: {
     extend: {},
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark"], // ✅ only these 2 for now
+    themes: ["light", "dark"], // Basic 2 themes
   },
-}
-
+};
 

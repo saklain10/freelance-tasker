@@ -2,6 +2,8 @@ import React from 'react';
 import Banner from "../components/Banner";
 import FeaturedTasks from '../components/FeaturedTasks';
 import { Fade } from "react-awesome-reveal";
+import VisionSection from '../components/VisionSection';
+import WhyChooseUs from '../components/WhyChooseUs';
 
 
 const Home = () => {
@@ -9,9 +11,9 @@ const Home = () => {
     <div className="pt-21"> 
       <Banner />
       
+      
       <Fade direction="up" triggerOnce>
-            <div className="bg-white py-4">
-              {/* dark:bg-gray-900 */}
+            <div className="bg-white dark:bg-gray-900 my-4">
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <div className="text-center bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow hover:shadow-md transition">
             <img src="/img2.png" alt="Icon" className="mx-auto mb-4" />
@@ -34,6 +36,9 @@ const Home = () => {
       </div>
       </Fade>
       <FeaturedTasks />
+      
+      <VisionSection></VisionSection>
+      <WhyChooseUs></WhyChooseUs>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink } from "react-router"; // fixed router import
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 
@@ -28,29 +28,50 @@ const Navbar = () => {
   };
 
   const navLinkStyle = ({ isActive }) =>
-    isActive ? "text-blue-500 font-semibold" : "text-gray-700 dark:text-gray-200";
+    isActive
+      ? "text-blue-500 font-semibold"
+      : "text-gray-800 dark:text-gray-200 hover:text-blue-400";
 
   const commonLinks = (
     <>
-      <NavLink to="/" className={navLinkStyle}>Home</NavLink>
-      <NavLink to="/browse-tasks" className={navLinkStyle}>Browse Tasks</NavLink>
+      <NavLink to="/" className={navLinkStyle}>
+        Home
+      </NavLink>
+      <NavLink to="/browse-tasks" className={navLinkStyle}>
+        Browse Tasks
+      </NavLink>
       {user && (
         <>
-          <NavLink to="/add-task" className={navLinkStyle}>Add Task</NavLink>
-          <NavLink to="/my-posted-tasks" className={navLinkStyle}>My Tasks</NavLink>
+          <NavLink to="/add-task" className={navLinkStyle}>
+            Add Task
+          </NavLink>
+          <NavLink to="/my-posted-tasks" className={navLinkStyle}>
+            My Tasks
+          </NavLink>
         </>
       )}
       {!user ? (
         <>
-          <NavLink to="/login" className={navLinkStyle}>Login</NavLink>
-          <NavLink to="/signup" className={navLinkStyle}>Signup</NavLink>
+          <NavLink to="/login" className={navLinkStyle}>
+            Login
+          </NavLink>
+          <NavLink to="/signup" className={navLinkStyle}>
+            Signup
+          </NavLink>
         </>
       ) : (
-        <div className="flex items-center gap-3 mt-2 lg:mt-0">
+        <div className="flex items-center gap-3">
           {user.photoURL && (
-            <img src={user.photoURL} alt="profile" className="w-8 h-8 rounded-full border" />
+            <img
+              src={user.photoURL}
+              alt="profile"
+              title={user.displayName}
+              className="w-8 h-8 rounded-full border"
+            />
           )}
-          <span className="text-sm dark:text-white">{user.displayName || user.email}</span>
+          <span className="text-sm dark:text-white text-gray-800">
+            {user.displayName || user.email}
+          </span>
           <button
             onClick={handleLogout}
             className="text-red-400 hover:underline text-sm"
@@ -63,9 +84,12 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-black text-white shadow-md">
+    <div className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black shadow-md text-gray-800 dark:text-white">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-white">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-xl font-bold text-gray-800 dark:text-white"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
@@ -82,7 +106,7 @@ const Navbar = () => {
           {commonLinks}
           <button
             onClick={toggleTheme}
-            className="text-xl hover:text-yellow-300 transition"
+            className="text-xl hover:text-yellow-400 transition"
             title="Toggle Theme"
           >
             {theme === "light" ? <FaMoon /> : <FaSun />}
@@ -93,20 +117,22 @@ const Navbar = () => {
         <div className="lg:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-2xl text-white"
+            className="text-2xl"
           >
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
-       {/* Mobile Nav Menu  */}
+      {/* Mobile Nav Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-red-800 px-6 py-4 space-y-3">
+        <div
+          className={`lg:hidden flex flex-wrap justify-center items-center gap-4 px-4 py-3 w-11/12 mx-auto rounded-md bg-gray-100 dark:bg-gray-900 shadow-md`}
+        >
           {commonLinks}
           <button
             onClick={toggleTheme}
-            className="text-xl text-white hover:text-yellow-300 transition block"
+            className="text-xl hover:text-yellow-400 transition"
             title="Toggle Theme"
           >
             {theme === "light" ? <FaMoon /> : <FaSun />}
