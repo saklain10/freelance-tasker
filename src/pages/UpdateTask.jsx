@@ -15,7 +15,7 @@ const UpdateTask = () => {
 
   // Fetch task details
   useEffect(() => {
-    fetch(`http://localhost:3000/tasks/${id}`)
+    fetch(`https://freelance-marketplace-server-ten.vercel.app/tasks/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTaskData(data);
@@ -43,7 +43,7 @@ const UpdateTask = () => {
     };
      console.log(updatedTask)
 
-    fetch(`http://localhost:3000/tasks/${id}`, {
+    fetch(`https://freelance-marketplace-server-ten.vercel.app/tasks/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTask),

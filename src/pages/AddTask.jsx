@@ -23,7 +23,7 @@ const AddTask = () => {
     const taskData = new FormData(form)
     const taskDataAll = Object.fromEntries(taskData.entries())
     console.log("Submit Task:", taskDataAll);
-    fetch('http://localhost:3000/tasks', {
+    fetch('https://freelance-marketplace-server-ten.vercel.app/tasks', {
       method: "POST",
       headers: {
         'content-type': 'application/json'

@@ -10,11 +10,11 @@ const TaskDetails = () => {
   const [bidsCount, setBidsCount] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tasks/${id}`)
+    fetch(`https://freelance-marketplace-server-ten.vercel.app/tasks/${id}`)
       .then(res => res.json())
       .then(data => setTask(data));
 
-    fetch(`http://localhost:3000/bids/count/${id}`)
+    fetch(`https://freelance-marketplace-server-ten.vercel.app/bids/count/${id}`)
       .then(res => res.json())
       .then(data => setBidsCount(data.count));
   }, [id]);
@@ -26,7 +26,7 @@ const TaskDetails = () => {
       userName: user.displayName,
     };
 
-    fetch("http://localhost:3000/bids", {
+    fetch("https://freelance-marketplace-server-ten.vercel.app/bids", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bidData),

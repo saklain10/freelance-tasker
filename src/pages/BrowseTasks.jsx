@@ -5,7 +5,7 @@ const BrowseTasks = () => {
   const [taskList, setTaskList] = useState([])
 
   useEffect(() => {
-  fetch('http://localhost:3000/tasks')
+  fetch('https://freelance-marketplace-server-ten.vercel.app/tasks')
     .then(res => res.json())
     .then(data => {
       setTaskList(data);

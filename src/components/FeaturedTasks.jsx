@@ -4,7 +4,7 @@ const FeaturedTasks = () => {
   const [taskList, setTaskList] = useState([])
 
   useEffect(() => {
-  fetch('http://localhost:3000/tasks?limit=6')
+  fetch('https://freelance-marketplace-server-ten.vercel.app/tasks?limit=6')
     .then(res => res.json())
     .then(data => {
       setTaskList(data);

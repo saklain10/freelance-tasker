@@ -10,7 +10,7 @@ const MyTasks = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-posted-tasks?email=${user.email}`)
+      fetch(`https://freelance-marketplace-server-ten.vercel.app/my-posted-tasks?email=${user.email}`)
         .then(res => res.json())
         .then(data => setMyTasks(data))
         .catch(err => console.error("Failed to load tasks", err));
@@ -27,7 +27,7 @@ const MyTasks = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/tasks/${id}`, {
+        fetch(`https://freelance-marketplace-server-ten.vercel.app/tasks/${id}`, {
           method: "DELETE"
         })
           .then(res => res.json())
