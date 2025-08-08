@@ -71,5 +71,5 @@ FreeLance Tasker is a modern freelance marketplace tailored for small-scale gigs
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/freelance-tasker.git
+git clone https://github.com/saklain10/freelance-tasker
 cd freelance-tasker
