@@ -1,12 +1,81 @@
-# React + Vite
+# 🎯 FreeLance Tasker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project Banner](https://i.ibb.co.com/20ftB7jV/freelance-tasker.png)
 
-Currently, two official plugins are available:
+A full-stack web application that connects individuals with freelancers for small-scale tasks. Users can post tasks, browse available jobs, place bids, and manage their own task listings seamlessly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌐 Live URLs
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Client Site:** [https://freelance-task-handler.web.app/](https://freelance-task-handler.web.app/)
+- **Server/API:** [https://freelance-marketplace-server-ten.vercel.app/](https://freelance-marketplace-server-ten.vercel.app/)
+
+---
+
+## 🧠 Description
+
+FreeLance Tasker is a modern freelance marketplace tailored for small-scale gigs. Users can register as clients or freelancers. Clients post jobs, while freelancers explore available listings and submit bids. It includes powerful authentication, task CRUD operations, bid management, and a sleek UI.
+
+---
+
+## 🖼️ Screenshot
+
+> ![App Screenshot](https://i.ibb.co.com/20ftB7jV/freelance-tasker.png)
+
+---
+
+## 🔍 Key Features
+
+- 🔐 **Secure Authentication**  
+  Email/password and Google login via Firebase. Includes form validation and protected routes.
+
+- 📝 **Task Management (CRUD)**  
+  Users can add, update, delete, and view their tasks with confirmation alerts.
+
+- 📦 **Browse & Bid on Tasks**  
+  Freelancers can view public tasks, filter by deadline, and place bids.
+
+- 💼 **Bid Tracking**  
+  Each task displays the total number of bids received and relevant bidder details.
+
+- 📱 **Responsive Design**  
+  Mobile-first design ensures smooth usability across all screen sizes.
+
+- 🎨 **Modern UI/UX**  
+  Features Lottie animations, smooth scroll, and typewriter effects (optional).
+
+---
+
+## 🧪 Tech Stack
+
+- **Frontend:** React.js, React Router DOM, Tailwind CSS  
+- **Authentication:** Firebase Auth  
+- **Backend:** Node.js, Express.js, MongoDB  
+- **Hosting:** Netlify (Client), Vercel (Server)  
+- **Others:** SweetAlert2, dotenv, JWT, CORS
+
+---
+
+## 📦 Dependencies
+
+- `firebase`  
+- `axios`  
+- `sweetalert2`  
+- `jsonwebtoken`  
+- `cors`  
+- `dotenv`  
+- `express`  
+- `mongoose`
+
+---
+
+## 🛠️ Local Setup Guide
+
+> To run this project locally, follow the steps below:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/freelance-tasker.git
+cd freelance-tasker
