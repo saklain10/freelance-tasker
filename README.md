@@ -19,12 +19,6 @@ FreeLance Tasker is a modern freelance marketplace tailored for small-scale gigs
 
 ---
 
-## 🖼️ Screenshot
-
-> ![App Screenshot](https://i.ibb.co.com/20ftB7jV/freelance-tasker.png)
-
----
-
 ## 🔍 Key Features
 
 - 🔐 **Secure Authentication**  
